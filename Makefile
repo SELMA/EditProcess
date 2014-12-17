@@ -2,16 +2,18 @@ CC		= g++
 
 RM		= rm -rf
 
+PATH_SOURCES	= ./sources
+
 CPPFLAGS	+= -Wextra -Wall -Werror
-CPPFLAGS	+= -I.
+CPPFLAGS	+= -I./includes/
 
 LDFLAGS		+= -lpsapi
 
 NAME		= editProcess
 
-SRCS		= main.cpp	\
-		  Tools.cpp	\
-		  MyProcess.cpp
+SRCS		= $(PATH_SOURCES)/main.cpp	    \
+		  $(PATH_SOURCES)/Tools.cpp	    \
+		  $(PATH_SOURCES)/MyProcess.cpp
 
 OBJS		= $(SRCS:.cpp=.o)
 
@@ -21,7 +23,8 @@ $(NAME):	$(OBJS)
 
 all:		$(NAME)
 
-clean:		$(RM) $(OBJS)
+clean:		
+		$(RM) $(OBJS)
 
 fclean:		clean
 		$(RM) $(NAME).exe
