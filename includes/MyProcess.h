@@ -16,26 +16,34 @@
 #ifndef MYPROCESS_H
 #define	MYPROCESS_H
 
+#define SIZE    1024
+
 class MyProcess {
 public:
     MyProcess();
     MyProcess(const MyProcess& orig);
     virtual ~MyProcess();
+    
 private:
     HANDLE                          _process;
     DWORD                           _processId;
     PROCESS_MEMORY_COUNTERS         _memory;
     LPVOID                          _address;
-    int                             _addressValue;
+    char                            _addressValue[256];
     LPVOID                          _lastAddress;
+    DWORD                           _aProcesses[SIZE];
+    DWORD                           _cbNeeded;
+    DWORD                           _cProcesses;
     Tools                           *_tools = new Tools();
     
 public:
     DWORD                           getProcessId();
     HANDLE                          getProcess();
     LPVOID                          getAddress();
-    int                             getAddressValue();
+    std::string                     getAddressValue();
     LPVOID                          getLastAddress();
+    int                             getNbOfProcess(); // todo
+    DWORD                           getProcessIdByName(); // todo
     void                            setProcessId();
     void                            setProcess();
     void                            setMemory();
@@ -44,6 +52,7 @@ public:
     bool                            readLastProcessMemory();
     bool                            readProcessMemory(LPVOID);
     bool                            writeProcessMemory(int);
+    void                            cleanAddressValue();
     /* test !!! */
     void                            test();
 };

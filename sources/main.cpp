@@ -4,7 +4,7 @@
 int                     main()
 {
     MyProcess           *process = new MyProcess();
-    int                 test = 42;
+    int                 test = 4200;
     
     std::cout << test << std::endl;
     process->test();

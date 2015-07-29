@@ -16,12 +16,17 @@ public:
     Tools();
     Tools(const Tools& orig);
     virtual ~Tools();
+    
 private:
-    std::string         _windowTitle;
+    std::string                 _windowTitle;
+    HWND                        _hwnd;
+    static    WINBOOL                     enumProcess(HWND, LPARAM);
+    
 public:
-    HWND                checkProcess();
-    void                myError(std::string);
-    std::string         getWindowTitle();
+    HWND                        checkProcess();
+    void                        myError(std::string);
+    std::string                 getWindowTitle();
+    void                        setHwnd(std::string, HWND);
 };
 
 #endif	/* TOOLS_H */

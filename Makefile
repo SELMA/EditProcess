@@ -7,7 +7,7 @@ PATH_SOURCES	= ./sources
 CPPFLAGS	+= -Wextra -Wall -Werror
 CPPFLAGS	+= -I./includes/
 
-LDFLAGS		+= -lpsapi
+LDFLAGS		+= -lpsapi -lOleacc
 
 NAME		= editProcess
 
